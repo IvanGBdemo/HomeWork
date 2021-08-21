@@ -11,9 +11,10 @@ public class DataBaseRepository {
 // ? - PreparedStatement
     private String insertWeather = "insert into weather (city, localDate, temperature) values (?, ?, ?)";
     private String getWeather = "select * from weather";
-// Сохраняю строку подключения к БД
+    // Сохраняю строку подключения к БД
     private static final String DB_PATH = "jdbc:sqlite:geekbrains.db";
-// Чтобы код выполнился сразу после старта программы и не привязывая к методу, оборачиваю его в static
+
+// Чтобы код выполнился сразу после старта программы и не привязывался к методу, оборачиваю его в static
     static {
         try {
 // Вызываю класс базы данных
@@ -22,7 +23,8 @@ public class DataBaseRepository {
             e.printStackTrace();
         }
     }
-// Создаю метод сохранения погоды в БД
+
+    // Создаю метод сохранения погоды в БД
     public boolean saveWeatherToDataBase(Weather weather) throws SQLException {
         try (Connection connection = DriverManager.getConnection(DB_PATH)) {
             PreparedStatement saveWeather = connection.prepareStatement(insertWeather);
@@ -37,9 +39,11 @@ public class DataBaseRepository {
     }
 
     public void saveWeatherToDataBase(List<Weather> weatherList) throws SQLException {
+// Создаю соединение с базой данных
         try (Connection connection = DriverManager.getConnection(DB_PATH)) {
             PreparedStatement saveWeather = connection.prepareStatement(insertWeather);
             for (Weather weather : weatherList) {
+// Перечисляю поля, которые будут записаны в таблицу БД
                 saveWeather.setString(1, weather.getCity());
                 saveWeather.setString(2, weather.getLocalDate());
                 saveWeather.setDouble(3, weather.getTemperature());
@@ -51,10 +55,12 @@ public class DataBaseRepository {
         }
     }
 
-        public List<Weather> getSavedToDBWeather() {
+    public List<Weather> getSavedToDBWeather() {
         List<Weather> weathers = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(DB_PATH)) {
+// Создаю экземпляр класса Statement (запроса, который будет уходить в БД)
             Statement statement = connection.createStatement();
+// Вывожу данные из БД
             ResultSet resultSet = statement.executeQuery(getWeather);
             while (resultSet.next()) {
                 System.out.print(resultSet.getInt("id"));

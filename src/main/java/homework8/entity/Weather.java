@@ -6,7 +6,7 @@ public class Weather {
     private String localDate;
     private double temperature;
 
-    // Формирую для объекта конструктор, гетеры и сеттеры
+// Формирую для объекта конструктор, гетеры и сеттеры
     public Weather(String city, String localDate, double temperature) {
         this.city = city;
         this.localDate = localDate;

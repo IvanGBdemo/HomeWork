@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class UserInterfaceView {
+// Устанавливаю связь интерфейса с контроллером
     private Controller controller = new Controller();
 
     public void runInterface() {
+// Создаю возможность ввода пользователем данных в программу
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -18,8 +20,10 @@ public class UserInterfaceView {
 
             String command = scanner.nextLine();
 
-            //TODO* Сделать метод валидации пользовательского ввода
+//TODO* Сделать метод валидации пользовательского ввода
 
+// Вывожу метод получения данных погоды из БД (не успел)
+// Реализую выход из программы
             if (command.equals("0")) break;
 
             try {

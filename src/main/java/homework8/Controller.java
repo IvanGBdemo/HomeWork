@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Controller {
     private WeatherModel weatherModel = new AccuweatherModel();
+// Создаю интерфейс взаимодействия пользователя и программы
     private Map<Integer, homework8.Period> variants = new HashMap<>();
 
     public Controller() {
@@ -15,6 +16,7 @@ public class Controller {
     }
 
     public void getWeather(String userInput, String selectedCity) throws IOException {
+// Ввожу алгоритм действий программы на случай некорректного ввода данных пользователем
         Integer userIntegerInput = Integer.parseInt(userInput);
 
         switch (variants.get(userIntegerInput)) {
