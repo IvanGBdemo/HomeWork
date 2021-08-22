@@ -3,8 +3,8 @@ package homework9;
 import java.util.List;
 
 public class Student {
-private String name;
-private List<Course> courses;
+    private String name;
+    private List<Course> courses;
 
     public Student(String name, List<Course> courses) {
         this.name = name;
