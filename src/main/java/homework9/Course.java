@@ -3,7 +3,7 @@ package homework9;
 import java.util.Objects;
 
 public class Course {
-private String name;
+    private String name;
 
     public Course(String name) {
         this.name = name;
